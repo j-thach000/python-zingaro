@@ -12,21 +12,32 @@ exam_answers = input()
 #    account for ties
 # 2. print names of those who have the most correct answers
 
-sequence_adrian = 'ABC' * n_questions
+# incorrect logic for getting just the necessary amount of sequence characters for each boy
+# still works but still the wrong logic lol
+# sequence_adrian = 'ABC' * n_questions
+# correct_adrian = 0
+
+# sequence_bruno = 'BABC' * n_questions
+# correct_bruno = 0
+
+# sequence_goran = 'CCAABB' * n_questions
+# correct_goran = 0
+
+adrian = 'ABC'
+bruno = 'BABC'
+goran = 'CCAABB'
 correct_adrian = 0
-
-sequence_bruno = 'BABC' * n_questions
 correct_bruno = 0
-
-sequence_goran = 'CCAABB' * n_questions
 correct_goran = 0
 
-for i in range(n_questions):
-	if sequence_adrian[i] == exam_answers[i % len(adrian)]:
+# changed range from n_questions to len(exam_questions) for clearer intention of comparing 
+# the string of exam answers to each boy's sequence
+for i in range(len(exam_answers)):
+	if adrian[i % len(adrian)] == exam_answers[i]:
 		correct_adrian += 1
-	if sequence_bruno[i] == exam_answers[i]:
+	if bruno[i % len(bruno)] == exam_answers[i]:
 		correct_bruno += 1
-	if sequence_goran[i] == exam_answers[i]:
+	if goran[i % len(goran)] == exam_answers[i]:
 		correct_goran += 1
 
 most_correct = max(correct_adrian, correct_bruno, correct_goran)
